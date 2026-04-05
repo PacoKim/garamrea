@@ -1,628 +1,363 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>가람부동산</title>
-    <meta name="description" content="가람부동산이 전해드리는 생생한 부동산 시장 뉴스. 광주 남구 봉선동 아파트 시세 정보 및 전문가의 인사이트를 확인하세요.">
-    <meta name="keywords" content="부동산뉴스, 봉선동아파트시세, 광주부동산전망, 가람부동산블로그, 부동산투자정보">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가람부동산 | 부동산 인사이트</title>
+  <meta name="description" content="광주 서구 부동산 시장 동향과 투자 가이드, 가람부동산 테크니컬 리포트">
+  
+  <!-- 아이콘: FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Blog specific overrides or refinements if needed */
+    .blog-header-section {
+      padding: 160px 0 80px;
+      background: var(--accent-gradient-dark);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
     
-    <!-- 오픈 그래프 (소셜 공유용) -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="가람부동산">
-    <meta property="og:description" content="광주 봉선동 부동산의 모든 것. 가람부동산 블로그에서 확인하세요.">
-    <meta property="og:image" content="https://pacokim.github.io/garambudongsan/images/og-image.jpg">
-    <meta property="og:url" content="https://pacokim.github.io/garambudongsan/blog.html">
-
-    <!-- 폰트: Pretendard -->
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <!-- 아이콘: FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    .blog-header-section .cta-glow { opacity: 0.1; }
     
-    <style>
-        :root {
-            --primary-color: #0F172A; /* 다크 네이비 */
-            --accent-color: #D4AF37; /* 고급스러운 골드 */
-            --bg-color: #F8FAFC; /* 아주 밝은 쿨그레이 */
-            --text-main: #1E293B; /* 짙은 그레이 */
-            --text-light: #64748B; /* 중간 그레이 */
-            --white: #FFFFFF;
-        }
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+    }
+    
+    .blog-post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    /* Blog Card Premium Light */
+    .main-blog-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: var(--transition-base);
+      box-shadow: var(--shadow-card);
+    }
+    
+    .main-blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--border-accent);
+    }
+    
+    .main-blog-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+    
+    .main-blog-content {
+      padding: 40px;
+    }
+    
+    .main-blog-meta {
+      display: flex;
+      gap: 20px;
+      font-size: 0.8125rem;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+    
+    .main-blog-meta span i {
+      color: var(--accent-primary);
+      margin-right: 6px;
+    }
+    
+    .main-blog-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    
+    .main-blog-body {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    
+    /* Sidebar Widgets */
+    .sidebar-widget {
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-bottom: 30px;
+    }
+    
+    .sidebar-widget h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-accent);
+      display: inline-block;
+    }
+    
+    .widget-category-list li {
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    
+    .widget-category-list li:hover {
+      color: var(--accent-primary);
+      padding-left: 4px;
+    }
+    
+    .recent-post-small {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    
+    .recent-post-small img {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+    }
+    
+    .recent-post-small h5 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    
+    .recent-post-small span {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Pretendard', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        /* Header (Same as index.html) */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 80px;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 40px;
-        }
-
-        nav a {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--text-main);
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        .btn-contact {
-            padding: 10px 24px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border-radius: 4px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-contact:hover {
-            background-color: #1e293b;
-        }
-
-        /* 상담 버튼 드롭다운 스타일 */
-        .contact-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 140px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1001;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-        .dropdown-content a {
-            color: var(--primary-color) !important;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-weight: 600;
-            font-size: 14px;
-            transition: background 0.3s;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: var(--accent-color);
-        }
-        .contact-dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Blog Header */
-        .blog-header {
-            padding: 160px 5% 80px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #1e293b 100%);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .blog-header h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .blog-header p {
-            color: #cbd5e1;
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Blog Content */
-        .container {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-
-        .blog-list {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .blog-post {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .blog-post:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-post img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-        }
-
-        .post-content {
-            padding: 30px;
-        }
-
-        .post-meta {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 15px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .post-meta span i {
-            margin-right: 5px;
-            color: var(--accent-color);
-        }
-
-        .post-title {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .post-excerpt {
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .read-more {
-            color: var(--accent-color);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .widget {
-            background: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .widget h4 {
-            font-size: 18px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 15px;
-        }
-
-        .category-list li {
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 15px;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .category-list li:hover {
-            color: var(--accent-color);
-        }
-
-        .recent-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .recent-post-item {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .recent-post-item img {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .recent-post-info h5 {
-            font-size: 14px;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        .recent-post-info span {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-
-        /* Footer (Same as index.html) */
-        footer {
-            background-color: #0b1120;
-            color: #94a3b8;
-            padding: 80px 5% 40px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* 게시글 관리 도구 스타일 */
-        .admin-controls {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .btn-write {
-            padding: 12px 25px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border-radius: 8px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
-        }
-
-        .btn-write:hover {
-            background-color: #b8962d;
-            transform: translateY(-2px);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 15px;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .btn-save {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-save:hover {
-            background-color: #1e293b;
-        }
-
-        .delete-btn {
-            background: #fee2e2;
-            color: #ef4444;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .blog-header h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; }
+      .main-blog-card img { height: 250px; }
+      .main-blog-content { padding: 30px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header id="header">
-        <a href="index.html" class="logo">가람부동산<span>.</span></a>
-        <nav>
-            <ul>
-                <li><a href="index.html#hero">홈</a></li>
-                <li><a href="index.html#featured">매물 검색</a></li>
-                <li><a href="index.html#about">중개사 소개</a></li>
-                <li><a href="blog.html">블로그</a></li>
-            </ul>
-        </nav>
-        <div class="contact-dropdown">
-            <button class="btn-contact">상담</button>
-            <div class="dropdown-content">
-                <a href="tel:010-7600-2104"><i class="fa-solid fa-phone"></i> 전화 상담</a>
-                <a href="sms:010-7600-2104"><i class="fa-solid fa-comment-sms"></i> 문자 상담</a>
-            </div>
-        </div>
-    </header>
+  <!-- ====== Navigation ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo">가람부동산<span>.</span></a>
+      <div class="nav-links">
+        <a href="index.html#featured" class="nav-link">추천매물</a>
+        <a href="index.html#process" class="nav-link">중개과정</a>
+        <a href="blog.html" class="nav-link">블로그</a>
+        <a href="index.html#faq" class="nav-link">FAQ</a>
+      </div>
+      <a href="tel:010-7600-2104" class="nav-cta">📞 상담문의</a>
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="메뉴 열기">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Blog Header -->
-    <section class="blog-header">
-        <h1>부동산 인사이트</h1>
-        <p>광주 프리미엄 부동산 시장의 흐름을 읽는 가장 정확한 시선, 가람부동산 테크니컬 리포트</p>
-    </section>
+  <!-- ====== Mobile Menu ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="메뉴 닫기">✕</button>
+    <a href="index.html#featured" onclick="closeMobile()">추천매물</a>
+    <a href="index.html#process" onclick="closeMobile()">중개과정</a>
+    <a href="blog.html" onclick="closeMobile()">블로그</a>
+    <a href="index.html#faq" onclick="closeMobile()">FAQ</a>
+    <a href="tel:010-7600-2104" onclick="closeMobile()" class="btn btn-primary" style="margin-top:16px;">📞 전화 상담</a>
+  </div>
 
-    <!-- Main Content -->
+  <!-- ====== Blog Header ====== -->
+  <section class="blog-header-section">
+    <div class="cta-glow cta-glow--1"></div>
+    <div class="cta-glow cta-glow--2"></div>
     <div class="container">
-        <main class="blog-list">
-            <!-- Admin Controls -->
-            <div class="admin-controls" id="admin-controls" style="display:none;">
-                <button class="btn-write" onclick="window.location.href='admin.html'">
-                    <i class="fa-solid fa-gear"></i> 관리자 대시보드 가기
-                </button>
-            </div>
+      <div class="reveal">
+        <h1 class="section-title" style="color:white; margin-bottom:16px;">부동산 인사이트</h1>
+        <p style="color:rgba(255,255,255,0.7); font-size:1.125rem;">광주 서구의 생생한 부동산 소식과 깊이 있는 시장 분석</p>
+      </div>
+    </div>
+  </section>
 
-            <!-- Dynamic Posts Area (Firebase 연동 완료) -->
-            <div id="dynamic-posts">
-                <p style="text-align:center; padding: 50px; color: #64748B;">게시글을 불러오는 중입니다...</p>
-            </div>
+  <!-- ====== Main Blog Layout ====== -->
+  <section class="section" id="blog-content">
+    <div class="container">
+      <div class="blog-layout">
+        <!-- Blog Main -->
+        <main class="blog-post-list" id="dynamic-posts">
+          <p style="text-align:center; padding: 60px; color: var(--text-tertiary);">소식을 불러오고 있습니다...</p>
         </main>
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="widget">
-                <h4>카테고리</h4>
-                <ul class="category-list" id="category-list">
-                    <!-- Dynamic categories -->
-                </ul>
+          <div class="sidebar-widget reveal">
+            <h4>카테고리</h4>
+            <ul class="widget-category-list" id="category-list">
+              <!-- Categories dynamically added -->
+            </ul>
+          </div>
+          <div class="sidebar-widget reveal reveal-delay-1">
+            <h4>최신 소식</h4>
+            <div id="recent-posts">
+              <!-- Recent posts dynamically added -->
             </div>
-
-            <div class="widget">
-                <h4>최신 게시글</h4>
-                <div class="recent-posts" id="recent-posts">
-                    <!-- Dynamic recent posts -->
-                </div>
-            </div>
+          </div>
+          <div class="sidebar-widget reveal reveal-delay-2" style="background:var(--accent-navy); color:white;">
+            <h4 style="color:white; border-bottom-color:var(--accent-primary);">상담 안내</h4>
+            <p style="font-size:14px; opacity:0.8; margin-bottom:20px;">매물 문의 및 투자 상담은 언제든 환영합니다.</p>
+            <a href="tel:010-7600-2104" class="btn btn-gold" style="width:100%; justify-content:center;">전화 바로 연결</a>
+          </div>
         </aside>
+      </div>
     </div>
+  </section>
 
-    <!-- Footer (Same as index.html) -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-col" style="flex: 2;">
-                <h4>가람부동산.</h4>
-                <p>광주광역시 최고의 하이엔드 부동산 중개 법인입니다. 당신의 품격에 어울리는 최상의 공간을 제안합니다.</p>
-            </div>
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo" style="font-size:1.25rem; color:white;">가람부동산<span style="color:#D4AF37;">.</span></a>
+          <p>고객님께 꼭 맞는 고품격 매물을 찾아드리는 믿을 수 있는 파트너입니다.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 GARAM Real Estate. All rights reserved. | <a href="admin-login.html" style="color: #475569; font-size: 12px;">Admin</a></p>
+        <div class="footer-col">
+          <h4>정보</h4>
+          <a href="index.html#featured">추천매물</a>
+          <a href="index.html#process">중개과정</a>
+          <a href="blog.html">블로그</a>
+          <a href="index.html#faq">자주 묻는 질문</a>
         </div>
-    </footer>
+        <div class="footer-col">
+          <h4>연락처</h4>
+          <a href="tel:010-7600-2104">📞 010-7600-2104</a>
+          <a>📍 광주광역시 서구 농성동</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 가람부동산. All rights reserved. | <a href="admin-login.html" style="color:rgba(255,255,255,0.3);">Admin</a></span>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Firebase SDK Scripts -->
-    <script type="importmap">
-    {
-      "imports": {
-        "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
-        "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+  <script src="script.js"></script>
+
+  <!-- Firebase SDK -->
+  <script type="importmap">
+  {
+    "imports": {
+      "firebase/app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+      "firebase/firestore": "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import { initializeApp } from "firebase/app";
+    import { getFirestore, collection, getDocs, query, orderBy, limit } from "firebase/firestore";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4bxl2efr-a2qlCv9zclP-kaL106Bpvxc",
+      authDomain: "garambudongsan.firebaseapp.com",
+      projectId: "garambudongsan",
+      storageBucket: "garambudongsan.firebasestorage.app",
+      messagingSenderId: "610338625520",
+      appId: "1:610338625520:web:7c113deb9334a302b62f35"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const postsContainer = document.getElementById('dynamic-posts');
+    const categoryList = document.getElementById('category-list');
+    const recentPostsList = document.getElementById('recent-posts');
+
+    async function loadData() {
+      try {
+        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+        const snap = await getDocs(q);
+        const posts = [];
+        snap.forEach(doc => posts.push({id: doc.id, ...doc.data()}));
+        
+        renderPosts(posts);
+        renderCategories(posts);
+        renderRecent(posts.slice(0, 5));
+      } catch (e) {
+        console.error(e);
       }
     }
-    </script>
 
-    <script type="module">
-        import { initializeApp } from "firebase/app";
-        import { getFirestore, collection, getDocs, query, orderBy } from "firebase/firestore";
+    function renderPosts(posts) {
+      if(posts.length === 0) {
+        postsContainer.innerHTML = '<p style="text-align:center; padding:60px; color:var(--text-tertiary);">등록된 소식이 아직 없습니다.</p>';
+        return;
+      }
+      postsContainer.innerHTML = '';
+      posts.forEach(p => {
+        postsContainer.innerHTML += `
+          <article class="main-blog-card reveal">
+            <img src="${p.image}" alt="${p.title}" onerror="this.src='images/apartment-default.png'">
+            <div class="main-blog-content">
+              <div class="main-blog-meta">
+                <span><i class="fa-solid fa-calendar"></i> ${p.date}</span>
+                <span><i class="fa-solid fa-tag"></i> ${p.category}</span>
+              </div>
+              <h2 class="main-blog-title">${p.title}</h2>
+              <p class="main-blog-body">${p.excerpt}</p>
+              <a href="blog-detail.html?fbid=${p.id}" class="btn btn-outline" style="padding:10px 24px;">더 보기 <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        `;
+      });
+      // Re-init reveal
+      document.querySelectorAll('.reveal').forEach(el => {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        obs.observe(el);
+      });
+    }
 
-        // Firebase 설정 (사용자 제공)
-        const firebaseConfig = {
-          apiKey: "AIzaSyC4bxl2efr-a2qlCv9zclP-kaL106Bpvxc",
-          authDomain: "garambudongsan.firebaseapp.com",
-          projectId: "garambudongsan",
-          storageBucket: "garambudongsan.firebasestorage.app",
-          messagingSenderId: "610338625520",
-          appId: "1:610338625520:web:7c113deb9334a302b62f35"
-        };
+    function renderCategories(posts) {
+      const cats = {};
+      posts.forEach(p => cats[p.category] = (cats[p.category] || 0) + 1);
+      categoryList.innerHTML = '';
+      Object.keys(cats).forEach(c => {
+        categoryList.innerHTML += `<li>${c} <span>(${cats[c]})</span></li>`;
+      });
+    }
 
-        // Firebase 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+    function renderRecent(recent) {
+      recentPostsList.innerHTML = '';
+      recent.forEach(p => {
+        recentPostsList.innerHTML += `
+          <div class="recent-post-small" onclick="location.href='blog-detail.html?fbid=${p.id}'">
+            <img src="${p.image}" alt="${p.title}" onerror="this.src='images/apartment-default.png'">
+            <div>
+              <h5>${p.title}</h5>
+              <span>${p.date}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
 
-        // UI Elements
-        const dynamicPostsContainer = document.getElementById('dynamic-posts');
-        const categoryListContainer = document.getElementById('category-list');
-        const recentPostsContainer = document.getElementById('recent-posts');
-
-        // Load posts on startup
-        document.addEventListener('DOMContentLoaded', loadBlogData);
-
-        async function loadBlogData() {
-            dynamicPostsContainer.innerHTML = '<p style="text-align:center; padding: 40px;">불러오는 중...</p>';
-            
-            try {
-                // Fetch all posts (for categories and counts)
-                const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-                const querySnapshot = await getDocs(q);
-                
-                const posts = [];
-                querySnapshot.forEach((doc) => {
-                    posts.push({ id: doc.id, ...doc.data() });
-                });
-
-                // 1. Render Main Post List
-                renderPosts(posts);
-
-                // 2. Render Sidebar: Categories
-                renderCategories(posts);
-
-                // 3. Render Sidebar: Recent Posts (Top 5)
-                renderRecentPosts(posts.slice(0, 5));
-
-            } catch (error) {
-                console.error("Error loading blog data: ", error);
-                dynamicPostsContainer.innerHTML = '<p style="text-align:center; padding: 40px; color: red;">게시글을 불러오는 중 오류가 발생했습니다.</p>';
-            }
-        }
-
-        function renderPosts(posts) {
-            dynamicPostsContainer.innerHTML = ''; 
-            if (posts.length === 0) {
-                dynamicPostsContainer.innerHTML = '<p style="text-align:center; padding: 40px; color: var(--text-light);">등록된 게시글이 아직 없습니다.</p>';
-                return;
-            }
-
-            posts.forEach((post) => {
-                const postHTML = `
-                    <article class="blog-post">
-                        <img src="${post.image}" alt="${post.title}" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'">
-                        <div class="post-content">
-                            <div class="post-meta">
-                                <span><i class="fa-solid fa-calendar"></i> ${post.date}</span>
-                                <span><i class="fa-solid fa-user"></i> ${post.author}</span>
-                                <span><i class="fa-solid fa-tag"></i> ${post.category}</span>
-                            </div>
-                            <h2 class="post-title">${post.title}</h2>
-                            <p class="post-excerpt">${post.excerpt}</p>
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <a href="blog-detail.html?fbid=${post.id}" class="read-more">계속 읽기 (본문 보기) <i class="fa-solid fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                `;
-                dynamicPostsContainer.innerHTML += postHTML;
-            });
-        }
-
-        function renderCategories(posts) {
-            const categoriesMap = {};
-            posts.forEach(post => {
-                const cat = post.category || '기타';
-                categoriesMap[cat] = (categoriesMap[cat] || 0) + 1;
-            });
-
-            categoryListContainer.innerHTML = '';
-            Object.keys(categoriesMap).sort().forEach(cat => {
-                const li = document.createElement('li');
-                li.innerHTML = `${cat} <span>(${categoriesMap[cat]})</span>`;
-                li.onclick = () => filterByCategory(cat);
-                categoryListContainer.appendChild(li);
-            });
-        }
-
-        function renderRecentPosts(recentPosts) {
-            recentPostsContainer.innerHTML = '';
-            recentPosts.forEach(post => {
-                const itemHTML = `
-                    <div class="recent-post-item" style="cursor:pointer;" onclick="window.location.href='blog-detail.html?fbid=${post.id}'">
-                        <img src="${post.image}" alt="${post.title}" onerror="this.src='https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80'">
-                        <div class="recent-post-info">
-                            <h5>${post.title}</h5>
-                            <span>${post.date}</span>
-                        </div>
-                    </div>
-                `;
-                recentPostsContainer.innerHTML += itemHTML;
-            });
-        }
-
-        function filterByCategory(category) {
-            // Optional: Implement filtering if desired, or just alert/log for now as per minimal requirement
-            console.log(`Filtering by category: ${category}`);
-            // To implement filtering, you could re-call renderPosts with filtered array
-            // For now, staying simple as requested.
-        }
-    </script>
+    loadData();
+  </script>
 </body>
 </html>

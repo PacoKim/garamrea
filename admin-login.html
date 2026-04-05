@@ -1,110 +1,147 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 로그인 | 가람부동산</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #0F172A;
-            --accent-color: #D4AF37;
-            --bg-color: #F8FAFC;
-            --white: #FFFFFF;
-        }
-        body {
-            font-family: 'Pretendard', sans-serif;
-            background-color: var(--primary-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-        }
-        .logo span { color: var(--accent-color); }
-        .form-group {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #64748B;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #E2E8F0;
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-        }
-        .form-group input:focus {
-            border-color: var(--accent-color);
-        }
-        .btn-login {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn-login:hover {
-            background-color: #1e293b;
-        }
-        .error-msg {
-            color: #EF4444;
-            font-size: 14px;
-            margin-top: 15px;
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 로그인 | 가람부동산</title>
+  
+  <!-- 아이콘: FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    body {
+      background: var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+    }
+    
+    .login-card {
+      background: var(--bg-card);
+      padding: 60px 40px;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+    
+    .login-card .nav-logo {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      display: inline-block;
+    }
+    
+    .login-field {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    
+    .login-field label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .login-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      font-size: 1rem;
+      transition: var(--transition-base);
+    }
+    
+    .login-input:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+    
+    .btn-login {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent-navy);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+    
+    .btn-login:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+    }
+    
+    .error-msg {
+      margin-top: 20px;
+      color: #ef4444;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: none;
+    }
+    
+    .back-home {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      transition: color 0.3s;
+    }
+    
+    .back-home:hover {
+      color: var(--accent-primary);
+    }
+  </style>
 </head>
 <body>
-    <div class="login-card">
-        <div class="logo">가람부동산<span>.</span> 관리자</div>
-        <div class="form-group">
-            <label>비밀번호</label>
-            <input type="password" id="password" placeholder="비밀번호를 입력하세요">
-        </div>
-        <button class="btn-login" onclick="login()">로그인</button>
-        <div class="error-msg" id="error-msg">비밀번호가 일치하지 않습니다.</div>
-    </div>
 
-    <script>
-        function login() {
-            const pw = document.getElementById('password').value;
-            // 예시용 고정 비밀번호: 1234
-            if(pw === '0130') {
-                sessionStorage.setItem('isAdmin', 'true');
-                window.location.href = 'admin.html';
-            } else {
-                document.getElementById('error-msg').style.display = 'block';
-            }
-        }
-    </script>
+  <div class="login-container">
+    <div class="login-card reveal visible">
+      <a href="index.html" class="nav-logo">가람부동산<span>.</span></a>
+      <p style="margin-bottom:40px; color:var(--text-tertiary);">관리자 인증이 필요합니다.</p>
+      
+      <div class="login-field">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" class="login-input" placeholder="••••••••" onkeypress="if(event.keyCode==13) login()">
+      </div>
+      
+      <button class="btn-login" onclick="login()">로그인 인증</button>
+      <div class="error-msg" id="error-msg"><i class="fa-solid fa-triangle-exclamation"></i> 비밀번호가 올바르지 않습니다.</div>
+      
+      <a href="index.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> 홈으로 돌아가기</a>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const pw = document.getElementById('password').value;
+      // 비밀번호 유지: 0130
+      if(pw === '0130') {
+        sessionStorage.setItem('isAdmin', 'true');
+        window.location.href = 'admin.html';
+      } else {
+        const error = document.getElementById('error-msg');
+        error.style.display = 'block';
+        setTimeout(() => { error.style.display = 'none'; }, 3000);
+      }
+    }
+  </script>
+
 </body>
 </html>

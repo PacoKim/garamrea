@@ -483,10 +483,50 @@
       }
     }
 
-    // Property Data
-    const staticProperties = [];
-    let allProperties = [];
+    // Property Data (샘플 데이터 추가)
+    const staticProperties = [
+      {
+        id: "sample-1",
+        title: "상무 센트럴자이 (브랜드 신축급)",
+        badge: "매매",
+        badgeColor: "#D4AF37",
+        price: "12억 5,000만",
+        address: "광주광역시 서구 치평동",
+        image: "images/hero-apartment.png",
+        beds: "3",
+        baths: "2",
+        area: "112㎡ (34평)",
+        description: "상무지구 중심권에 위치한 고품격 브랜드 아파트입니다. 남향 위주의 배치와 탁 트인 조망권, 최신 시스템 에어컨 및 주방 옵션이 완비되어 있습니다."
+      },
+      {
+        id: "sample-2",
+        title: "유스퀘어 인근 수익형 상가 건물",
+        badge: "매매",
+        badgeColor: "#0F172A",
+        price: "45억",
+        address: "광주광역시 서구 광천동",
+        image: "images/office.png",
+        beds: "0",
+        baths: "4",
+        area: "연면적 950㎡",
+        description: "광천동 유스퀘어 인근 유동인구 풍부한 핵심 상권에 위치한 5층 규모의 상가 건물입니다. 현재 전층 임대 완료되어 안정적인 수익을 기대할 수 있습니다."
+      },
+      {
+        id: "sample-3",
+        title: "금호지구 대우아파트 (올리모델링)",
+        badge: "전세",
+        badgeColor: "#22c55e",
+        price: "4억 2,000만",
+        address: "광주광역시 서구 금호동",
+        image: "images/apartment-default.png",
+        beds: "3",
+        baths: "2",
+        area: "84㎡ (25평)",
+        description: "최근 전체 리모델링을 완료하여 신축급 컨디션을 자랑하는 전세 매물입니다. 금호지구 인프라와 학군을 동시에 누릴 수 있는 최적의 입지입니다."
+      }
+    ];
 
+    let allProperties = [];
     const grid = document.getElementById('property-grid');
 
     async function loadAllContent() {
