@@ -62,32 +62,6 @@
   --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.1);
   --shadow-elevated: 0 12px 48px rgba(0, 0, 0, 0.12);
   --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
-
-  /* Theme Transitions */
-  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* --- Dark Theme Overrides --- */
-body.dark-theme {
-  --bg-primary: #0F172A;
-  --bg-secondary: #1E293B;
-  --bg-tertiary: #334155;
-  --bg-card: #1E293B;
-  --bg-card-hover: #1E293B;
-  --bg-glass: rgba(15, 23, 42, 0.75);
-  --bg-glass-hover: rgba(15, 23, 42, 0.9);
-  
-  --text-primary: #F8FAFC;
-  --text-secondary: rgba(248, 250, 252, 0.7);
-  --text-tertiary: rgba(248, 250, 252, 0.5);
-  --text-muted: rgba(248, 250, 252, 0.3);
-  
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(255, 255, 255, 0.15);
-  --border-accent: rgba(212, 175, 55, 0.4);
-  
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* --- Reset & Base --- */
@@ -110,12 +84,6 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   font-weight: 400;
-  transition: var(--transition-theme);
-}
-
-/* Apply theme transition to common elements */
-.navbar-inner, .card, .btn, .footer, section, div, p, h1, h2, h3, h4, span, i, input, select, textarea {
-  transition: var(--transition-theme);
 }
 
 body.modal-open {

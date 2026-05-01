@@ -9,49 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initCountUp();
   initFloatingCta();
-  initTheme();
 });
-
-/* --- Theme Toggle --- */
-function initTheme() {
-  const themeToggle = document.getElementById('themeToggle');
-  const mobileThemeToggle = document.getElementById('mobileThemeToggle');
-  const body = document.body;
-  
-  // Check for saved theme
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    body.classList.add('dark-theme');
-    updateThemeIcons(true);
-  }
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => toggleTheme());
-  }
-  if (mobileThemeToggle) {
-    mobileThemeToggle.addEventListener('click', () => toggleTheme());
-  }
-}
-
-function toggleTheme() {
-  const body = document.body;
-  const isDark = body.classList.toggle('dark-theme');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  updateThemeIcons(isDark);
-}
-
-function updateThemeIcons(isDark) {
-  const icons = document.querySelectorAll('#themeToggle i, #mobileThemeToggle i');
-  icons.forEach(icon => {
-    if (isDark) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    } else {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    }
-  });
-}
 
 /* --- Scroll Reveal --- */
 function initScrollReveal() {
